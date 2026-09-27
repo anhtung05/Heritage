@@ -54,13 +54,39 @@
   text-shadow: var(--shadow-brand);
 }
 
+.logoMark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  overflow: hidden;
+}
+
+.logoMarkMask {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: url("/figma/heritage-logo-mask.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: 0.18px 0.02px;
+  -webkit-mask-size: 19.7px 19.95px;
+  mask-image: url("/figma/heritage-logo-mask.svg");
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  mask-position: 0.18px 0.02px;
+  mask-size: 19.7px 19.95px;
+}
+
+.logoMarkFill {
+  display: block;
+}
+
 .controls {
   display: flex;
   align-items: center;
   gap: 22px;
 }
 
-.searchForm,
+.searchField,
 .navigation {
   border: 1px solid var(--glass-border);
   border-radius: 20px;
@@ -69,60 +95,66 @@
   backdrop-filter: blur(2.5px);
 }
 
-.searchForm {
+.searchField {
   width: 226px;
   height: 32px;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 3px 18px 3px 14px;
+  padding: 0 18px 0 14px;
   color: var(--text);
   font-family: var(--font-brand);
   font-size: 0.8125rem;
   font-weight: var(--font-weight-normal);
   line-height: 1;
   white-space: nowrap;
+  transition:
+    background var(--transition),
+    border-color var(--transition);
 }
 
-.searchForm:focus-within {
+.searchField:hover {
   background: var(--glass-surface-hover);
+}
+
+.searchField:focus-within {
+  border-color: var(--accent);
+}
+
+.searchField img {
+  width: 16px;
+  height: 16px;
+  flex: none;
 }
 
 .searchInput {
   width: 100%;
   min-width: 0;
+  padding: 0;
   border: 0;
+  outline: 0;
   background: transparent;
   color: inherit;
   font: inherit;
 }
 
-.searchSubmit {
-  width: 24px;
-  height: 24px;
-  display: grid;
-  flex: none;
-  place-items: center;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
+.searchInput::placeholder {
+  color: var(--text);
+  opacity: 1;
 }
 
-.searchInput::placeholder {
-  color: var(--text-secondary);
-  opacity: 1;
+.searchInput::-webkit-search-cancel-button {
+  display: none;
 }
 
 .navigation {
   width: 219px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 16px;
   min-height: 35px;
-  padding: 8px 18px;
+  padding: 8px 20px 8px 26px;
 }
 
 .navigationLink {
@@ -163,7 +195,7 @@
     backdrop-filter: none;
   }
 
-  .searchForm {
+  .searchField {
     display: none;
   }
 

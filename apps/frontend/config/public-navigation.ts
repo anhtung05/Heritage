@@ -1,7 +1,8 @@
 export type PublicRouteKey =
   | "home"
-  | "explore"
+  | "library"
   | "map"
+  | "faq"
   | "chat"
   | "preferences";
 
@@ -23,8 +24,8 @@ export const PUBLIC_ROUTES = [
       "Không gian khám phá di sản văn hóa Đà Nẵng - Huế đang được hoàn thiện.",
   },
   {
-    key: "explore",
-    href: "/explore",
+    key: "library",
+    href: "/library",
     label: "Khám phá",
     title: "Khám phá di sản",
     description:
@@ -37,6 +38,14 @@ export const PUBLIC_ROUTES = [
     title: "Bản đồ di sản",
     description:
       "Trải nghiệm khám phá di sản theo địa điểm đang được xây dựng.",
+  },
+  {
+    key: "faq",
+    href: "/faq",
+    label: "Câu hỏi thường gặp",
+    title: "Câu hỏi thường gặp",
+    description:
+      "Các câu trả lời về cách khám phá và sử dụng cổng thông tin di sản sẽ xuất hiện tại đây.",
   },
   {
     key: "chat",
@@ -58,8 +67,8 @@ export const PUBLIC_ROUTES = [
 export const PUBLIC_NAVIGATION_ITEMS = [
   { key: "home", href: "/", label: "Home" },
   { key: "map", href: "/map", label: "Map" },
-  { key: "explore", href: "/explore", label: "Library" },
-  { key: "chat", href: "/chat", label: "FAQ" },
+  { key: "library", href: "/library", label: "Library" },
+  { key: "faq", href: "/faq", label: "FAQ" },
 ] as const;
 
 export const PUBLIC_ROUTE_BY_KEY = Object.fromEntries(

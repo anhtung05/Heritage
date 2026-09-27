@@ -21,43 +21,35 @@ export function PublicShell({ children }: PublicShellProps) {
           href="/"
           aria-label="Heritage - Trang chủ"
         >
-          <Image
-            src="/figma/heritage-logo.png"
-            alt=""
-            width={20}
-            height={20}
-            priority
-          />
+          <span className={styles.logoMark} aria-hidden="true">
+            <span className={styles.logoMarkMask}>
+              <Image
+                className={styles.logoMarkFill}
+                src="/figma/heritage-logo-mark.svg"
+                alt=""
+                width={20}
+                height={20}
+                priority
+              />
+            </span>
+          </span>
           <span>HERITAGE</span>
         </Link>
 
         <div className={styles.controls}>
-          <form
-            className={styles.searchForm}
-            action="/explore"
+          <div
+            className={styles.searchField}
             role="search"
             aria-label="Search heritage collections"
           >
-            <button
-              className={styles.searchSubmit}
-              type="submit"
-              aria-label="Search"
-            >
-              <Image
-                src="/figma/search.png"
-                alt=""
-                width={16}
-                height={16}
-              />
-            </button>
+            <Image src="/figma/search.svg" alt="" width={16} height={16} />
             <input
               className={styles.searchInput}
               type="search"
-              name="q"
-              aria-label="Search tapestries"
+              aria-label="Search Tapestries"
               placeholder="Search Tapestries…"
             />
-          </form>
+          </div>
           <PublicNavigation />
         </div>
       </header>
