@@ -27,8 +27,8 @@ export function PublicShell({ children }: PublicShellProps) {
                 className={styles.logoMarkFill}
                 src="/figma/heritage-logo-mark.svg"
                 alt=""
-                width={20}
-                height={20}
+                width={24}
+                height={24}
                 priority
               />
             </span>

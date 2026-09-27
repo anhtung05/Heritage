@@ -1,10 +1,15 @@
 .page {
+  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
   flex: 1;
   display: grid;
   place-items: center;
   padding: clamp(40px, 8vw, 112px) clamp(20px, 6vw, 80px);
   overflow: hidden;
+  background-image: var(--public-hero-background);
+  background-position: center;
+  background-size: cover;
 }
 
 .content {

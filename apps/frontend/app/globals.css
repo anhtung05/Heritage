@@ -65,6 +65,14 @@
   --glass-surface-strong: #00000080;
   --glass-border: #ffffff61;
 
+  --public-hero-background:
+    radial-gradient(
+      circle at 50% 72%,
+      color-mix(in srgb, var(--accent) 52%, var(--bg)),
+      color-mix(in srgb, var(--accent) 18%, var(--bg)) 42%,
+      var(--bg) 78%
+    );
+
   --shadow-floating: 0 10px 30px #00000059;
   --shadow-brand: 0 2px 4px #00000066;
   --shadow-glass-inset: inset 0 0 6px 3px #8a8a8a4d;
