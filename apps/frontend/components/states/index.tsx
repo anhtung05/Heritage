@@ -13,9 +13,15 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
   tip = 'Đang tải dữ liệu di sản...',
   className = '',
 }) => (
-  <div className={`flex flex-col items-center justify-center p-8 min-h-[200px] ${className}`}>
-    <Spin size="large" tip={tip} />
-  </div>
+  <div
+  className={`flex flex-col items-center justify-center p-8 min-h-[200px] ${className}`}
+  role="status"
+  aria-live="polite"
+  aria-label={tip}
+>
+  <Spin size="large" />
+  <span className="mt-3 text-stone-500">{tip}</span>
+</div>
 );
 
 interface EmptyStateProps {
@@ -33,8 +39,17 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   onAction,
   className = '',
 }) => (
-  <div className={`flex flex-col items-center justify-center p-8 min-h-[240px] text-center ${className}`}>
-    <Empty description={<span className="text-stone-400">{description}</span>}>
+  <div
+  className={`flex flex-col items-center justify-center p-8 min-h-[240px] text-center ${className}`} role="status" aria-live="polite">
+    <Empty
+  image={Empty.PRESENTED_IMAGE_SIMPLE}
+  description={
+    <div>
+      <div className="font-medium text-stone-700">{title}</div>
+      <div className="mt-1 text-stone-500">{description}</div>
+    </div>
+  }
+>
       {actionText && onAction && (
         <Button type="primary" onClick={onAction} style={{ background: '#b45309', borderColor: '#b45309' }}>
           {actionText}
@@ -57,14 +72,18 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
   onRetry,
   className = '',
 }) => (
-  <div className={`flex items-center justify-center p-6 ${className}`}>
+      <div
+      className={`flex items-center justify-center p-6 ${className}`}
+      role="alert"
+      aria-live="assertive"
+    >
     <Result
       status="error"
       title={<span className="text-red-500 font-medium">{title}</span>}
       subTitle={<span className="text-stone-400">{subTitle}</span>}
       extra={
         onRetry && (
-          <Button icon={<ReloadOutlined />} onClick={onRetry} danger>
+          <Button icon={<ReloadOutlined />} onClick={onRetry} danger aria-label="Thử tải lại dữ liệu">
             Tải lại trang
           </Button>
         )
