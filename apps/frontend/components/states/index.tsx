@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Spin, Empty, Button, Result } from 'antd';
+import { Spin, Empty, Button, Result, Flex, Typography } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 
 interface LoadingStateProps {
@@ -13,15 +13,30 @@ export const LoadingState: React.FC<LoadingStateProps> = ({
   tip = 'Đang tải dữ liệu di sản...',
   className = '',
 }) => (
-  <div
-  className={`flex flex-col items-center justify-center p-8 min-h-[200px] ${className}`}
-  role="status"
-  aria-live="polite"
-  aria-label={tip}
->
-  <Spin size="large" />
-  <span className="mt-3 text-stone-500">{tip}</span>
-</div>
+  <Flex
+    vertical
+    align="center"
+    justify="center"
+    className={className}
+    role="status"
+    aria-live="polite"
+    aria-label={tip}
+    style={{
+      minHeight: 200,
+      padding: 32,
+    }}
+  >
+    <Spin size="large" />
+
+    <Typography.Text
+      type="secondary"
+      style={{
+        marginTop: 12,
+      }}
+    >
+      {tip}
+    </Typography.Text>
+  </Flex>
 );
 
 interface EmptyStateProps {
@@ -39,24 +54,38 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   onAction,
   className = '',
 }) => (
-  <div
-  className={`flex flex-col items-center justify-center p-8 min-h-[240px] text-center ${className}`} role="status" aria-live="polite">
+  <Flex
+    vertical
+    align="center"
+    justify="center"
+    className={className}
+    role="status"
+    aria-live="polite"
+    style={{
+      minHeight: 240,
+      padding: 32,
+      textAlign: 'center',
+    }}
+  >
     <Empty
-  image={Empty.PRESENTED_IMAGE_SIMPLE}
-  description={
-    <div>
-      <div className="font-medium text-stone-700">{title}</div>
-      <div className="mt-1 text-stone-500">{description}</div>
-    </div>
-  }
->
+      image={Empty.PRESENTED_IMAGE_SIMPLE}
+      description={
+        <Flex vertical gap={4}>
+          <Typography.Text strong>{title}</Typography.Text>
+
+          <Typography.Text type="secondary">
+            {description}
+          </Typography.Text>
+        </Flex>
+      }
+    >
       {actionText && onAction && (
-        <Button type="primary" onClick={onAction} style={{ background: '#b45309', borderColor: '#b45309' }}>
+        <Button type="primary" onClick={onAction}>
           {actionText}
         </Button>
       )}
     </Empty>
-  </div>
+  </Flex>
 );
 
 interface ErrorStateProps {
@@ -72,22 +101,32 @@ export const ErrorState: React.FC<ErrorStateProps> = ({
   onRetry,
   className = '',
 }) => (
-      <div
-      className={`flex items-center justify-center p-6 ${className}`}
-      role="alert"
-      aria-live="assertive"
-    >
+  <Flex
+    align="center"
+    justify="center"
+    className={className}
+    role="alert"
+    aria-live="assertive"
+    style={{
+      padding: 24,
+    }}
+  >
     <Result
       status="error"
-      title={<span className="text-red-500 font-medium">{title}</span>}
-      subTitle={<span className="text-stone-400">{subTitle}</span>}
+      title={title}
+      subTitle={subTitle}
       extra={
         onRetry && (
-          <Button icon={<ReloadOutlined />} onClick={onRetry} danger aria-label="Thử tải lại dữ liệu">
+          <Button
+            icon={<ReloadOutlined />}
+            onClick={onRetry}
+            danger
+            aria-label="Thử tải lại dữ liệu"
+          >
             Tải lại trang
           </Button>
         )
       }
     />
-  </div>
+  </Flex>
 );

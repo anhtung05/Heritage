@@ -157,7 +157,7 @@ export const MOCK_GRAPH_SUBGRAPH: GraphSubgraphMock = {
   ],
 };
 
-  export async function fetchMockGraphSubgraph(
+export async function fetchMockGraphSubgraph(
   delayMs = 300,
 ): Promise<GraphSubgraphMock> {
   return new Promise((resolve) => {
@@ -167,7 +167,7 @@ export const MOCK_GRAPH_SUBGRAPH: GraphSubgraphMock = {
   });
 }
 
-  export interface TourStopMock {
+export interface TourStopMock {
   story_id: string;
   order_index: number;
   title: string;
@@ -198,7 +198,7 @@ export const MOCK_GRAPH_SUBGRAPH: GraphSubgraphMock = {
   highlights: Record<string, unknown>[];
 }
 
-  export interface TourResponseMock {
+export interface TourResponseMock {
   slug: string;
   locale: string;
   title: string;
@@ -224,7 +224,7 @@ export const MOCK_TOUR: TourResponseMock = {
   published_at: null,
   stops: [],
 };
-  export async function fetchMockTour(
+export async function fetchMockTour(
   slug = 'lang-tu-duc',
   locale = 'vi',
   delayMs = 300,
@@ -239,7 +239,7 @@ export const MOCK_TOUR: TourResponseMock = {
     }, delayMs);
   });
 }
-  export interface GraphStatsMock {
+export interface GraphStatsMock {
   [key: string]: unknown;
 }
 
@@ -248,7 +248,7 @@ export const MOCK_GRAPH_STATS: GraphStatsMock = {
   edges: 24,
   chunks: 8,
 };
-  export async function fetchMockGraphStats(
+export async function fetchMockGraphStats(
   delayMs = 300,
 ): Promise<GraphStatsMock> {
   return new Promise((resolve) => {
